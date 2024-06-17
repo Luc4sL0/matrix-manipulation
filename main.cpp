@@ -1,5 +1,5 @@
 /* 
- * File:   matrixLib.h
+ * File:   main.cpp
  * Author: Lucas Lopes Baroni(2024.1.08.017)
  *
  * Created on 17 de junho de 2024, 09:49

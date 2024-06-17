@@ -1,12 +1,19 @@
+/* 
+ * File:   matrixLib.h
+ * Author: Lucas Lopes Baroni(2024.1.08.017)
+ *
+ * Created on 17 de junho de 2024, 09:49
+ */
+
 #include <stdio.h>
 #include "matrixLib.h"
 
-#define DEBUG 
+#define DEBUG //printf //Remova o comentário ao lado para obter logs das funções.
 
 matrixObj matrixTransposed(matrixObj mA){
     matrixObj mT;
-    mT.rows = mA.rows;
-    mT.collumns = mA.collumns;
+    mT.rows = mA.collumns;
+    mT.collumns = mA.rows;
     for(int i = 0; i < mT.rows; i++)
         for (int j = 0; j < mT.collumns; j++)
             mT.content[i][j] = mA.content[j][i];

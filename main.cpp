@@ -1,7 +1,15 @@
+/* 
+ * File:   matrixLib.h
+ * Author: Lucas Lopes Baroni(2024.1.08.017)
+ *
+ * Created on 17 de junho de 2024, 09:49
+ */
+
 #include <cstdlib>
 #include <stdio.h>
 #include <string>
 #include <time.h>
+#include <iostream>
 #include "matrixLib.h"
 
 using namespace std;
@@ -9,11 +17,15 @@ using namespace std;
 char consoleImplementation(){
     char userChoice;
     printf("Bem vindo ao manipulador de matrizes!\n");
-    printf("Selecione a opção que deseja executar com as matrizes presentes acima!\n");
+    printf("Selecione a opção que deseja executar com as matrizes presentes acima!\n\n");
     printf("MENU:\nA - Calcular transposta\nB - Somar as matrizes\nC - Multiplicar matrizes");
     printf("\nD - Calcular valor médio\n\nF - Sair\n\n");
-    printf("Insira a opção: ");
-    scanf("%c",&userChoice);
+    do
+    {
+        printf("Insira a opção (somente as opções do menu são válidas): ");
+        cin>>userChoice;
+    }
+    while(userChoice != 'A' && userChoice != 'B' && userChoice != 'C' && userChoice != 'D' && userChoice != 'F');
     return userChoice;
 }
 void showMatrix(matrixObj mA, char title){
@@ -30,7 +42,7 @@ void showMatrix(matrixObj mA, char title){
         printf("\n");
     }
     else
-        printf("Matriz %c é inválida.", title);
+        printf("Matriz %c é inválida (indefinida).\n", title);
 }
 void generateMatrix(matrixObj *mA, int rows, int collumns){
     mA->rows = rows;
@@ -41,13 +53,20 @@ void generateMatrix(matrixObj *mA, int rows, int collumns){
 }
 int main(){
     srand(time(NULL));
-    matrixObj matrix01, matrix02, matrixResult;
     
+    matrixObj matrix01, matrix02, matrixResult;
+    int r1, c1, r2, c2, insideOption;
     char option;
-    int insideOption;
-
-    generateMatrix(&matrix01, 3, 3);
-    generateMatrix(&matrix02, 3, 2);
+    
+    do {
+        printf("Insira respectivamente o número de linhas e colunas da sua matriz 01 (separados por espaço): ");
+        cin >> r1>>c1;
+        printf("Insira respectivamente o número de linhas e colunas da sua matriz 02 (separados por espaço): ");
+        cin >> r2>>c2;
+    } while ((r1 < 0 || r1 > MAX) || (r2 < 0 || r2 > MAX) || (c1 < 0 || c1 > MAX) || (c2 < 0 || c2 > MAX));
+    
+    generateMatrix(&matrix01,r1, c1);
+    generateMatrix(&matrix02, r2, c2);
 
     showMatrix(matrix01, '1');
     showMatrix(matrix02, '2');
@@ -57,11 +76,11 @@ int main(){
         option = consoleImplementation();
         switch (option)
         {
-            case 'A':
+            case 'A': //Calcula transposta.
                 printf("Selecione a matriz que você deseja usar.\n");
                 printf("1 - Matriz 01\n2 - Matriz 02\n\n0 - Voltar\n\n");
                 printf("Insira sua opção: ");
-                scanf("%d", &insideOption);
+                cin>>insideOption;
                 switch (insideOption)
                 {
                     case 1:
@@ -74,18 +93,18 @@ int main(){
                         break;
                 }
                 break;
-            case 'B':
+            case 'B': //Calcula a soma.
                 matrixResult = matrixSum(matrix01, matrix02);
                 showMatrix(matrixResult, 'R');
                 break;
-            case 'C':
+            case 'C': //Calcula a multiplicação.
                 matrixResult = matrixMultiplication(matrix01, matrix02);
                 showMatrix(matrixResult, 'R');
                 break;
-            case 'D':
+            case 'D': //Calcula o valor médio.
                 printf("Selecione a matriz que você deseja usar.\n");
                 printf("1 - Matriz 01\n2 - Matriz 02\n\n0 - Voltar");
-                scanf("%d", &insideOption);
+                cin>>insideOption;
                 switch (insideOption)
                 {
                     case 1:

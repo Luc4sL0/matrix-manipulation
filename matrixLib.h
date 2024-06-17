@@ -3,14 +3,12 @@
 
 #define MAX 128
 
-struct matrixVariables{
+typedef struct{
     int content[MAX][MAX];
     int rows, collumns;
 
-    bool matrixIsValid = true;
-};
-
-typedef matrixVariables matrixObj;
+    bool matrixIsNotValid;
+} matrixObj;
 
 matrixObj matrixTransposed(matrixObj mA);
 matrixObj matrixSum(matrixObj mA, matrixObj mB);

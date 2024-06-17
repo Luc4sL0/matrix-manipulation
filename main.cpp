@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <stdio.h>
 #include <string>
 #include <time.h>
@@ -8,14 +9,15 @@ using namespace std;
 char consoleImplementation(){
     char userChoice;
     printf("Bem vindo ao manipulador de matrizes!\n");
-    printf("Selecione a opção que deseja executar com as matrizes presentes acima!");
+    printf("Selecione a opção que deseja executar com as matrizes presentes acima!\n");
     printf("MENU:\nA - Calcular transposta\nB - Somar as matrizes\nC - Multiplicar matrizes");
-    printf("\nD - Calcular valor médio\n\nF - Sair\n");
+    printf("\nD - Calcular valor médio\n\nF - Sair\n\n");
+    printf("Insira a opção: ");
     scanf("%c",&userChoice);
     return userChoice;
 }
 void showMatrix(matrixObj mA, char title){
-    if(mA.matrixIsValid){
+    if(mA.matrixIsNotValid == false){
         printf("Matriz %c:\n", title);
         for (int i = 0; i < mA.rows; i++)
         {
@@ -48,7 +50,7 @@ int main(){
     generateMatrix(&matrix02, 3, 2);
 
     showMatrix(matrix01, '1');
-    showMatrix(matrix02, '1');
+    showMatrix(matrix02, '2');
 
     do
     {
@@ -57,7 +59,8 @@ int main(){
         {
             case 'A':
                 printf("Selecione a matriz que você deseja usar.\n");
-                printf("1 - Matriz 01\n2 - Matriz 02\n\n0 - Voltar");
+                printf("1 - Matriz 01\n2 - Matriz 02\n\n0 - Voltar\n\n");
+                printf("Insira sua opção: ");
                 scanf("%d", &insideOption);
                 switch (insideOption)
                 {

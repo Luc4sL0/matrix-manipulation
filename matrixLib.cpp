@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "matrixLib.h"
 
-#define DEBUG printf
+#define DEBUG 
 
 matrixObj matrixTransposed(matrixObj mA){
     matrixObj mT;
@@ -23,7 +23,7 @@ matrixObj matrixSum(matrixObj mA, matrixObj mB){
         return mR;
     }
     else{
-        mR.matrixIsValid = false;
+        mR.matrixIsNotValid = true;
         DEBUG("ERRO: mA e mB não possuem o mesmo número de linhas e colunas.\n");
     }
     return mR;
@@ -43,7 +43,7 @@ matrixObj matrixMultiplication(matrixObj mA, matrixObj mB){
             }
     }
     else{
-        mR.matrixIsValid = false;
+        mR.matrixIsNotValid = true;
         DEBUG("ERRO: mA e mB não possuem o mesmo número de colunas e linhas, respectivamente.\n");
     }
     return mR;

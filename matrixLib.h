@@ -1,6 +1,7 @@
+
 /* 
  * File:   matrixLib.h
- * Author: Lucas Lopes Baroni(2024.1.08.017)
+ * Author: Lucas Lopes Baroni
  *
  * Created on 17 de junho de 2024, 09:49
  */
@@ -18,9 +19,12 @@ typedef struct{
     int content[MAX][MAX];
     int rows, collumns;
 
-    bool matrixIsNotValid;
+    bool matrixIsNotValid = false;
 } matrixObj;
 
+void showMatrix(matrixObj mA, char title);
+void generateMatrix(matrixObj *mA, int rows, int collumns);
+void matrixCopyPaste(matrixObj mC, matrixObj *mP);
 /*
  * Retorna uma matriz transposta.
  * 
@@ -70,5 +74,6 @@ matrixObj matrixMultiplication(matrixObj mA, matrixObj mB);
  * @return retorna o valor númerico da média.
  */
 float matrixMediumVal(matrixObj mA);
+
 
 #endif

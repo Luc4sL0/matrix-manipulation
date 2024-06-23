@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Lucas Lopes Baroni(2024.1.08.017)
+ * Author: Lucas Lopes Baroni
  *
  * Created on 17 de junho de 2024, 09:49
  */
@@ -27,29 +27,6 @@ char consoleImplementation(){
     }
     while(userChoice != 'A' && userChoice != 'B' && userChoice != 'C' && userChoice != 'D' && userChoice != 'F');
     return userChoice;
-}
-void showMatrix(matrixObj mA, char title){
-    if(mA.matrixIsNotValid == false){
-        printf("Matriz %c:\n", title);
-        for (int i = 0; i < mA.rows; i++)
-        {
-            printf("|");
-            for (int j = 0; j < mA.collumns; j++)
-                printf("%4d", mA.content[i][j]);
-            printf("|");
-            printf("\n");
-        }
-        printf("\n");
-    }
-    else
-        printf("Matriz %c é inválida (indefinida).\n", title);
-}
-void generateMatrix(matrixObj *mA, int rows, int collumns){
-    mA->rows = rows;
-    mA->collumns = collumns;
-    for (int i = 0; i < mA->rows; i++)
-        for (int j = 0; j < mA->collumns; j++)
-            mA->content[i][j] = 0 + rand() % 10;
 }
 int main(){
     srand(time(NULL));
